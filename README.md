@@ -23,7 +23,7 @@ Player 1 (Human) vs. Player 2 (Human)
 
 2-Player Snakes & Ladder Game
 
-![](img/qr-snake.jpg)
+![](img/qr-snake.png)
 
 
 
