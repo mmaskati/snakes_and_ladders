@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <title>Snakes & Ladders Online Game</title>
+  <meta name="title" content="Snakes & Ladders Online Game" />
+  <meta name="description" content="Multiplayer - Play with one or two dice. Includes scoring points. Test your luck now! The first player to reach the 100th square wins the game." />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mobelmedia.com/demo/snakes/" />
+  <meta property="og:title" content="Snakes & Ladders Online Game" />
+  <meta property="og:description" content="Multiplayer - Play with one or two dice. Includes scoring points. Test your luck now! The first player to reach the 100th square wins the game." />
+  <meta property="og:image" content="https://mobelmedia.com/demo/snakes/img/dash.jpg" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://mobelmedia.com/demo/snakes/" />
+  <meta property="twitter:title" content="Snakes & Ladders Online Game" />
+  <meta property="twitter:description" content="Multiplayer - Play with one or two dice. Includes scoring points. Test your luck now! The first player to reach the 100th square wins the game." />
+  <meta property="twitter:image" content="https://mobelmedia.com/demo/snakes/img/dash.jpg" />
+
+  <!-- favicons -->
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="favicons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="favicons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="favicons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="favicons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="favicons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="favicons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="favicons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="favicons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="msapplication-TileColor" content="#272727">
+  <meta name="msapplication-TileImage" content="favicons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#272727">
+ 
+  <!-- load fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- load css -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="css/ladders.css">
+  <link href="https://fonts.googleapis.com/css?family=Exo+2:400,300,200,900,700,600,500" rel="stylesheet" type="text/css">
+
+<!-- 
+DEV.: Mazen Almaskati
+DATE: 19-nov-2023 to 26-nov-2023
+VER.: 1.0
+SRC.: mmt.me    
+
+For SEI7 GA Course Week 03 (Game Project) Game
+-->
+</head>
+<body>
+
+<main class="container-fluid game">
+
+  <div class="d-flex justify-content-center mobileheader">
+    <div class="col"><h1>Snakes & Ladders</h1></div>
+    <!--<div class="col-4 col-sm"><img class="mx-auto d-block" src="img/favicon.png" alt="game-icon"></div>-->
+  </div>
+
+<div class="row"> <!-- row for aside game-controls & game-board -->
+
+<aside class="order-2 col-lg-4 col-sm-12 max-vh-100 text-center game-controls">
+
+  <header class="d-flex justify-content-center">
+    <div class="col-8 col-sm"><h1>Snakes & Ladders</h1></div>
+    <div class="col-4 col-sm"><img class="mx-auto d-block" src="img/favicon.png" alt="game-icon"></div>
+  </header>
+
+    <div class="d-grid">
+      <a class="btn btn-lg btn-success start-button" id="main-button">Start New Game</a>
+      <a class="btn btn-lg btn-success end-button" id="main-button2">Reset the game</a>
+    </div>
+
+    <div class="d-grid">
+
+      <div class="row dices">
+        <div class="col-6">
+          <div class="d-grid gap-2 mx-auto">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="dice-button">
+            <label class="form-check-label" for="dice-button">Use two dices <i class="bi bi-dice-6-fill"></i> <i class="bi bi-dice-6-fill"></i></label>
+          </div>
+        </div>
+        <div class="d-grid gap-2 mx-auto">
+          <button id="sound-button" type="button" class="btn btn-sm btn-primary"><i class="bi bi-volume-up"></i> ON</button>
+        </div>
+          <!-- <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="mute-toggle">
+            <label class="form-check-label" for="mute-toggle">Mute</label>
+          </div> -->
+        </div>
+        <div class="col-3"><img src="img/6.png" alt="dice1" id="dice1"></div>
+        <div class="col-3"><img src="img/6.png" class="invisible" alt="dice2" id="dice2" ></div><!-- hidding 2nd dice -->
+      </div>
+
+      <div class="row dices">
+        <div class="row pb-3">
+          <div class="col"><h6>Player 1</h6></div>
+          <div class="col"><h6>Player 2</h6></div>
+        </div>  
+        <div class="row pb-2">
+          <div class="col-4 p-0"><img src="img/ex-p2.gif" class="p1x" id="p1x"></div>
+          <div class="col-2 border border-3 rounded border-black p-0"><span class="p1score">0</span></div>
+          <div class="col-4 p-0"><img src="img/p1.gif" class="p2x" id="p2x"></div>
+          <div class="col-2 border border-3 rounded border-black p-0"><span class="p2score">0</span></div>
+
+          <div class="box0" id="box0"><img src="img/ex-p2.gif" id="p1"> 0</div>
+          <div class="box0" id="box0p2"><img src="img/p1.gif" id="p2"></div>
+        </div>
+      </div>
+
+      <div class="d-grid logbox">
+        <div class="col thelog overflow-auto">
+          <!-- start log from here -->
+        </div>
+      </div>
+
+      <div class="d-grid instructions">
+      <!-- <div class="row">
+        <div class="col-6"><p class="text-left text-white p-1"><kbd class="bg-primary-subtle">SPACEBAR</kbd> for Player 1</p></div>
+        <div class="col-6"><p class="text-left text-white p-1"><kbd class="bg-white text-dark">ENTER</kbd> for Player 2</p></div>
+      </div> -->
+      <div class="d-grid">
+        <div class="col">
+          <h6 class="text-white text-start">Quick Instructions</h6>
+
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-warning">Set the dice number before starting game</li>
+            <li class="list-group-item list-group-item-info">Points: (+2) for Ladder | (-2) for Snake Hit | (+1) Rolling Double | (+10) Winning</li>
+            <li class="list-group-item list-group-item-info">Score Rating: Points / Moves</li>
+            <li class="list-group-item list-group-item-dark"><kbd class="bg-primary">Player 1</kbd> uses <kbd class="bg-primary-subtle text-primary">SPACEBAR</kbd></li>
+            <li class="list-group-item list-group-item-dark"><kbd class="bg-white text-primary">Player 2</kbd> uses <kbd class="bg-primary-subtle text-primary">ENTER</kbd></li>
+          </ul>
+            
+            
+          
+        </div>
+      </div>
+        <div class="row align-text-bottom copyright">
+          <div class="col">
+          <p class="text-white text-end">&copy; 2023 | <a href="https://mmaskati.com" target="_blank">mmaskati.com</a></p>
+        </div>
+      </div>
+
+    </div>        
+        
+
+<!-- modal for notification or game play rules or leader board-->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button> 
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+</aside>
+
+<!-- creating the gameboard -->
+<div class="order-1 col-lg-8 col-sm-12 max-vh-100 game-board">
+
+<!-- create the snakes & ladder at no particular order -->
+  <div class="Ssnake3" data-start="49" data-end="11">
+    <div class="row snakeX">
+      <div class="dotx dotx-1"><img src="./img/snake-head-1.png" height="150%"></div>
+      <div class="dotx dotx-2"><img src="./img/snake-body-1.png" height="100%"></div>
+      <div class="dotx dotx-3"><img src="./img/snake-body-1.png" height="90%"></div>
+      <div class="dotx dotx-4"><img src="./img/snake-body-1.png" height="90%"></div>
+      <div class="dotx dotx-5"><img src="./img/snake-body-1.png" height="80%"></div>
+      <div class="dotx dotx-6"><img src="./img/snake-body-1.png" height="70%"></div>
+      <div class="dotx dotx-7"><img src="./img/snake-body-1.png" height="50%"></div>
+      <div class="dotx dotx-8"><img src="./img/snake-body-1.png" height="40%"></div>
+      <div class="dotx dotx-9"><img src="./img/snake-body-1.png" height="30%"></div>
+      <div class="dotx dotx-10"><img src="./img/snake-body-1.png" height="20%"></div>
+      <div class="dotx dotx-11"><img src="./img/snake-body-1.png" height="20%"></div>
+      <div class="dotx dotx-12"><img src="./img/snake-body-1.png" height="10%"></div>
+      <!-- <div class="dotx dotx-13"><img src="./img/snake-body-1.png" height="50%"></div>
+      <div class="dotx dotx-14"><img src="./img/snake-body-1.png" height="40%"></div>
+      <div class="dotx dotx-15"><img src="./img/snake-body-1.png" height="30%"></div>
+      <div class="dotx dotx-16"><img src="./img/snake-body-1.png" height="30%"></div>
+      <div class="dotx dotx-17"><img src="./img/snake-body-1.png" height="20%"></div>
+      <div class="dotx dotx-18"><img src="./img/snake-body-1.png" height="20%"></div>
+      <div class="dotx dotx-19"><img src="./img/snake-body-1.png" height="10%"></div>
+      <div class="dotx dotx-20"><img src="./img/snake-body-1.png" height="10%"></div> -->
+    </div>
+  </div>
+
+  <div class="Ssnake5" data-start="64" data-end="60">
+    <div class="row snake">
+      <div class="dot dot-1"><img src="./img/snake-head.png" height="150%"></div>
+      <div class="dot dot-2"><img src="./img/snake-body.png" height="90%"></div>
+      <div class="dot dot-3"><img src="./img/snake-body.png" height="90%"></div>
+      <div class="dot dot-4"><img src="./img/snake-body.png" height="70%"></div>
+      <div class="dot dot-5"><img src="./img/snake-body.png" height="70%"></div>
+      <div class="dot dot-6"><img src="./img/snake-body.png" height="50%"></div>
+      <div class="dot dot-7"><img src="./img/snake-body.png" height="50%"></div>
+      <div class="dot dot-8"><img src="./img/snake-body.png" height="50%"></div>
+      <div class="dot dot-9"><img src="./img/snake-body.png" height="40%"></div>
+      <div class="dot dot-10"><img src="./img/snake-body.png" height="40%"></div>
+      <div class="dot dot-11"><img src="./img/snake-body.png" height="30%"></div>
+      <div class="dot dot-12"><img src="./img/snake-body.png" height="20%"></div>
+      <div class="dot dot-13"><img src="./img/snake-body.png" height="10%"></div>
+      <div class="dot dot-14"></div>
+      <div class="dot dot-15"></div>
+      <div class="dot dot-16"></div>
+      <div class="dot dot-17"></div>
+      <div class="dot dot-18"></div>
+      <div class="dot dot-19"></div>
+      <div class="dot dot-20"></div>
+    </div>
+  </div>
+
+  <div class="Ssnake4" data-start="62" data-end="19">
+    <div class="row snakeX">
+      <div class="dotx dotx-1"><img src="./img/snake-head-1.png" height="150%"></div>
+      <div class="dotx dotx-2"><img src="./img/snake-body-1.png" height="100%"></div>
+      <div class="dotx dotx-3"><img src="./img/snake-body-1.png" height="100%"></div>
+      <div class="dotx dotx-4"><img src="./img/snake-body-1.png" height="90%"></div>
+      <div class="dotx dotx-5"><img src="./img/snake-body-1.png" height="90%"></div>
+      <div class="dotx dotx-6"><img src="./img/snake-body-1.png" height="80%"></div>
+      <div class="dotx dotx-7"><img src="./img/snake-body-1.png" height="80%"></div>
+      <div class="dotx dotx-8"><img src="./img/snake-body-1.png" height="70%"></div>
+      <div class="dotx dotx-9"><img src="./img/snake-body-1.png" height="70%"></div>
+      <div class="dotx dotx-10"><img src="./img/snake-body-1.png" height="60%"></div>
+      <div class="dotx dotx-11"><img src="./img/snake-body-1.png" height="50%"></div>
+      <div class="dotx dotx-12"><img src="./img/snake-body-1.png" height="50%"></div>
+      <div class="dotx dotx-13"><img src="./img/snake-body-1.png" height="50%"></div>
+      <div class="dotx dotx-14"><img src="./img/snake-body-1.png" height="40%"></div>
+      <div class="dotx dotx-15"><img src="./img/snake-body-1.png" height="30%"></div>
+      <div class="dotx dotx-16"><img src="./img/snake-body-1.png" height="30%"></div>
+      <div class="dotx dotx-17"><img src="./img/snake-body-1.png" height="20%"></div>
+      <div class="dotx dotx-18"><img src="./img/snake-body-1.png" height="20%"></div>
+      <div class="dotx dotx-19"><img src="./img/snake-body-1.png" height="10%"></div>
+      <div class="dotx dotx-20"><img src="./img/snake-body-1.png" height="10%"></div>
+    </div>
+  </div>
+
+  <div class="ladder1" data-start="2" data-end="38"></div>
+  <div class="ladder2" data-start="7" data-end="14"></div>
+  <div class="ladder3" data-start="8" data-end="31"></div>
+  <div class="ladder4" data-start="15" data-end="26"></div>
+  <div class="ladder5" data-start="21" data-end="42"></div>
+  <div class="ladder6" data-start="28" data-end="84"></div>
+  <div class="ladder7" data-start="36" data-end="44"></div>
+  <div class="ladder8" data-start="51" data-end="67"></div>
+  <div class="ladder9" data-start="71" data-end="91"></div>
+  <div class="ladder10" data-start="78" data-end="98"></div>
+  <div class="ladder11" data-start="87" data-end="94"></div>
+
+  <div class="Ssnake1" data-start="16" data-end="6">
+    <div class="row snake">
+      <div class="dot dot-1"><img src="./img/snake-head.png" height="130%"></div>
+      <div class="dot dot-2"><img src="./img/snake-body.png" height="80%"></div>
+      <div class="dot dot-3"><img src="./img/snake-body.png" height="60%"></div>
+      <div class="dot dot-4"><img src="./img/snake-body.png" height="40%"></div>
+      <div class="dot dot-5"><img src="./img/snake-body.png" height="20%"></div>
+      <div class="dot dot-6"><img src="./img/snake-body.png" height="10%"></div>
+      <!-- <div class="dot dot-7"></div>
+      <div class="dot dot-8"></div>
+      <div class="dot dot-9"></div>
+      <div class="dot dot-10"></div>
+      <div class="dot dot-11"></div>
+      <div class="dot dot-12"></div>
+      <div class="dot dot-13"></div>
+      <div class="dot dot-14"></div>
+      <div class="dot dot-15"></div>
+      <div class="dot dot-16"></div>
+      <div class="dot dot-17"></div>
+      <div class="dot dot-18"></div>
+      <div class="dot dot-19"></div>
+      <div class="dot dot-20"></div> -->
+    </div>
+  </div>
+
+  <div class="Ssnake2" data-start="46" data-end="25">
+    <div class="row snake">
+      <div class="dot dot-1"><img src="./img/snake-head.png" height="120%"></div>
+      <div class="dot dot-2"><img src="./img/snake-body.png" height="90%"></div>
+      <div class="dot dot-3"><img src="./img/snake-body.png" height="90%"></div>
+      <div class="dot dot-4"><img src="./img/snake-body.png" height="70%"></div>
+      <div class="dot dot-5"><img src="./img/snake-body.png" height="70%"></div>
+      <div class="dot dot-6"><img src="./img/snake-body.png" height="50%"></div>
+      <div class="dot dot-7"><img src="./img/snake-body.png" height="50%"></div>
+      <div class="dot dot-8"><img src="./img/snake-body.png" height="30%"></div>
+      <div class="dot dot-9"><img src="./img/snake-body.png" height="20%"></div>
+      <!-- <div class="dot dot-10"><img src="./img/snake-body.png" height="10%"></div>
+      <div class="dot dot-11"></div>
+      <div class="dot dot-12"></div>
+      <div class="dot dot-13"></div>
+      <div class="dot dot-14"></div>
+      <div class="dot dot-15"></div>
+      <div class="dot dot-16"></div>
+      <div class="dot dot-17"></div>
+      <div class="dot dot-18"></div>
+      <div class="dot dot-19"></div>
+      <div class="dot dot-20"></div> -->
+    </div>
+  </div>
+
+  <div class="Ssnake6" data-start="74" data-end="53">
+    <div class="row snake">
+      <div class="dot dot-1"><img src="./img/snake-head.png" height="120%"></div>
+      <div class="dot dot-2"><img src="./img/snake-body.png" height="90%"></div>
+      <div class="dot dot-3"><img src="./img/snake-body.png" height="80%"></div>
+      <div class="dot dot-4"><img src="./img/snake-body.png" height="70%"></div>
+      <div class="dot dot-5"><img src="./img/snake-body.png" height="50%"></div>
+      <div class="dot dot-6"><img src="./img/snake-body.png" height="40%"></div>
+      <div class="dot dot-7"><img src="./img/snake-body.png" height="30%"></div>
+      <div class="dot dot-8"><img src="./img/snake-body.png" height="10%"></div>
+      <!-- <div class="dot dot-9"><img src="./img/snake-body.png" height="10%"></div>
+      <div class="dot dot-10"></div>
+      <div class="dot dot-11"></div>
+      <div class="dot dot-12"></div>
+      <div class="dot dot-13"></div>
+      <div class="dot dot-14"></div>
+      <div class="dot dot-15"></div>
+      <div class="dot dot-16"></div>
+      <div class="dot dot-17"></div>
+      <div class="dot dot-18"></div>
+      <div class="dot dot-19"></div>
+      <div class="dot dot-20"></div> -->
+    </div>
+  </div>
+  
+  <div class="Ssnake7" data-start="89" data-end="68">
+    <div class="row snake">
+      <div class="dot dot-1"><img src="./img/snake-head.png" height="150%"></div>
+      <div class="dot dot-2"><img src="./img/snake-body.png" height="100%"></div>
+      <div class="dot dot-3"><img src="./img/snake-body.png" height="80%"></div>
+      <div class="dot dot-4"><img src="./img/snake-body.png" height="70%"></div>
+      <div class="dot dot-5"><img src="./img/snake-body.png" height="60%"></div>
+      <div class="dot dot-6"><img src="./img/snake-body.png" height="50%"></div>
+      <div class="dot dot-7"><img src="./img/snake-body.png" height="40%"></div>
+      <div class="dot dot-8"><img src="./img/snake-body.png" height="30%"></div>
+      <div class="dot dot-9"><img src="./img/snake-body.png" height="20%"></div>
+      <div class="dot dot-10"><img src="./img/snake-body.png" height="10%"></div>
+      <!-- <div class="dot dot-11"></div>
+      <div class="dot dot-12"></div>
+      <div class="dot dot-13"></div>
+      <div class="dot dot-14"></div>
+      <div class="dot dot-15"></div>
+      <div class="dot dot-16"></div>
+      <div class="dot dot-17"></div>
+      <div class="dot dot-18"></div>
+      <div class="dot dot-19"></div>
+      <div class="dot dot-20"></div> -->
+    </div>
+  </div>
+
+  <div class="Ssnake8" data-start="92" data-end="88">
+    <div class="row snakeX">
+      <div class="dotx dotx-1"><img src="./img/snake-head-1.png" height="120%"></div>
+      <div class="dotx dotx-2"><img src="./img/snake-body-1.png" height="90%"></div>
+      <div class="dotx dotx-3"><img src="./img/snake-body-1.png" height="70%"></div>
+      <div class="dotx dotx-4"><img src="./img/snake-body-1.png" height="50%"></div>
+      <div class="dotx dotx-5"><img src="./img/snake-body-1.png" height="30%"></div>
+      <div class="dotx dotx-6"><img src="./img/snake-body-1.png" height="20%"></div>
+      <div class="dotx dotx-7"><img src="./img/snake-body-1.png" height="10%"></div>
+      <!-- <div class="dotx dotx-8"><img src="./img/snake-body-1.png" height="10%"></div>
+      <div class="dotx dotx-9"><img src="./img/snake-body-1.png" height="70%"></div>
+      <div class="dotx dotx-10"><img src="./img/snake-body-1.png" height="60%"></div>
+      <div class="dotx dotx-11"><img src="./img/snake-body-1.png" height="50%"></div>
+      <div class="dotx dotx-12"><img src="./img/snake-body-1.png" height="50%"></div>
+      <div class="dotx dotx-13"><img src="./img/snake-body-1.png" height="50%"></div>
+      <div class="dotx dotx-14"><img src="./img/snake-body-1.png" height="40%"></div>
+      <div class="dotx dotx-15"><img src="./img/snake-body-1.png" height="30%"></div>
+      <div class="dotx dotx-16"><img src="./img/snake-body-1.png" height="30%"></div>
+      <div class="dotx dotx-17"><img src="./img/snake-body-1.png" height="20%"></div>
+      <div class="dotx dotx-18"><img src="./img/snake-body-1.png" height="20%"></div>
+      <div class="dotx dotx-19"><img src="./img/snake-body-1.png" height="10%"></div>
+      <div class="dotx dotx-20"><img src="./img/snake-body-1.png" height="10%"></div> -->
+    </div>
+  </div>
+
+  <div class="Ssnake9" data-start="95" data-end="75">
+    <div class="row snake">
+      <div class="dot dot-1"><img src="./img/snake-head.png" height="140%"></div>
+      <div class="dot dot-2"><img src="./img/snake-body.png" height="80%"></div>
+      <div class="dot dot-3"><img src="./img/snake-body.png" height="70%"></div>
+      <div class="dot dot-4"><img src="./img/snake-body.png" height="50%"></div>
+      <div class="dot dot-5"><img src="./img/snake-body.png" height="40%"></div>
+      <div class="dot dot-6"><img src="./img/snake-body.png" height="30%"></div>
+      <div class="dot dot-7"><img src="./img/snake-body.png" height="20%"></div>
+      <div class="dot dot-8"><img src="./img/snake-body.png" height="10%"></div>
+      <!-- <div class="dot dot-9"></div>
+      <div class="dot dot-10"></div>
+      <div class="dot dot-11"></div>
+      <div class="dot dot-12"></div>
+      <div class="dot dot-13"></div>
+      <div class="dot dot-14"></div>
+      <div class="dot dot-15"></div>
+      <div class="dot dot-16"></div>
+      <div class="dot dot-17"></div>
+      <div class="dot dot-18"></div>
+      <div class="dot dot-19"></div>
+      <div class="dot dot-20"></div> -->
+    </div>
+  </div>
+
+  <div class="Ssnake10" data-start="99" data-end="80">
+    <div class="row snake">
+      <div class="dot dot-1"><img src="./img/snake-head.png" height="130%"></div>
+      <div class="dot dot-2"><img src="./img/snake-body.png" height="90%"></div>
+      <div class="dot dot-3"><img src="./img/snake-body.png" height="80%"></div>
+      <div class="dot dot-4"><img src="./img/snake-body.png" height="70%"></div>
+      <div class="dot dot-5"><img src="./img/snake-body.png" height="60%"></div>
+      <div class="dot dot-6"><img src="./img/snake-body.png" height="50%"></div>
+      <div class="dot dot-7"><img src="./img/snake-body.png" height="40%"></div>
+      <div class="dot dot-8"><img src="./img/snake-body.png" height="30%"></div>
+      <div class="dot dot-9"><img src="./img/snake-body.png" height="20%"></div>
+      <div class="dot dot-10"><img src="./img/snake-body.png" height="10%"></div>
+      <!-- <div class="dot dot-11"></div>
+      <div class="dot dot-12"></div>
+      <div class="dot dot-13"></div>
+      <div class="dot dot-14"></div>
+      <div class="dot dot-15"></div>
+      <div class="dot dot-16"></div>
+      <div class="dot dot-17"></div>
+      <div class="dot dot-18"></div>
+      <div class="dot dot-19"></div>
+      <div class="dot dot-20"></div> -->
+    </div>
+  </div>
+
+
+<!-- create the board game boxes -->
+<div class="container-fluid text-center">
+
+<div class="row nogutter boxrow">
+<div class="col max-vh-10 align-self-center green-l box" id="box100"> 100 </div>
+<div class="col max-vh-10 align-self-center green box" id="box99"> 99 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box98"> 98 </div>
+<div class="col max-vh-10 align-self-center green box" id="box97"> 97 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box96"> 96 </div>
+<div class="col max-vh-10 align-self-center green box" id="box95"> 95 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box94"> 94 </div>
+<div class="col max-vh-10 align-self-center green box" id="box93"> 93 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box92"> 92 </div>
+<div class="col max-vh-10 align-self-center green box" id="box91"> 91 </div>
+</div>
+
+<div class="row nogutter boxrow">
+<div class="col max-vh-10 align-self-center green box" id="box81"> 81 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box82"> 82 </div>
+<div class="col max-vh-10 align-self-center green box" id="box83"> 83 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box84"> 84 </div>
+<div class="col max-vh-10 align-self-center green box" id="box85"> 85 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box86"> 86 </div>
+<div class="col max-vh-10 align-self-center green box" id="box87"> 87 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box88"> 88 </div>
+<div class="col max-vh-10 align-self-center green box" id="box89"> 89 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box90"> 90 </div>
+</div>
+
+<div class="row nogutter boxrow green">
+<div class="col max-vh-10 align-self-center green-l box" id="box80"> 80 </div>
+<div class="col max-vh-10 align-self-center green box" id="box79"> 79 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box78"> 78 </div>
+<div class="col max-vh-10 align-self-center green box" id="box77"> 77 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box76"> 76 </div>
+<div class="col max-vh-10 align-self-center green box" id="box75"> 75 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box74"> 74 </div>
+<div class="col max-vh-10 align-self-center green box" id="box73"> 73 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box72"> 72 </div>
+<div class="col max-vh-10 align-self-center green box" id="box71"> 71 </div>
+</div>
+
+<div class="row nogutter boxrow green">
+<div class="col max-vh-10 align-self-center green box" id="box61"> 61 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box62"> 62 </div>
+<div class="col max-vh-10 align-self-center green box" id="box63"> 63 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box64"> 64 </div>
+<div class="col max-vh-10 align-self-center green box" id="box65"> 65 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box66"> 66 </div>
+<div class="col max-vh-10 align-self-center green box" id="box67"> 67 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box68"> 68 </div>
+<div class="col max-vh-10 align-self-center green box" id="box69"> 69 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box70"> 70 </div>
+</div>
+
+<div class="row nogutter boxrow green">
+<div class="col max-vh-10 align-self-center green-l box" id="box60"> 60 </div>
+<div class="col max-vh-10 align-self-center green box" id="box59"> 59 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box58"> 58 </div>
+<div class="col max-vh-10 align-self-center green box" id="box57"> 57 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box56"> 56 </div>
+<div class="col max-vh-10 align-self-center green box" id="box55"> 55 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box54"> 54 </div>
+<div class="col max-vh-10 align-self-center green box" id="box53"> 53 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box52"> 52</div>
+<div class="col max-vh-10 align-self-center green box" id="box51"> 51 </div>
+</div>
+
+<div class="row nogutter boxrow green">
+<div class="col max-vh-10 align-self-center green box" id="box41"> 41 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box42"> 42 </div>
+<div class="col max-vh-10 align-self-center green box" id="box43"> 43 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box44"> 44 </div>
+<div class="col max-vh-10 align-self-center green box" id="box45"> 45 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box46"> 46 </div>
+<div class="col max-vh-10 align-self-center green box" id="box47"> 47 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box48"> 48 </div>
+<div class="col max-vh-10 align-self-center green box" id="box49"> 49 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box50"> 50 </div>
+</div>
+
+<div class="row nogutter boxrow green">
+<div class="col max-vh-10 align-self-center green-l box" id="box40"> 40 </div>
+<div class="col max-vh-10 align-self-center green box" id="box39"> 39 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box38"> 38</div>
+<div class="col max-vh-10 align-self-center green box" id="box37"> 37 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box36"> 36 </div>
+<div class="col max-vh-10 align-self-center green box" id="box35"> 35 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box34"> 34 </div>
+<div class="col max-vh-10 align-self-center green box" id="box33"> 33 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box32"> 32 </div>
+<div class="col max-vh-10 align-self-center green box" id="box31"> 31 </div>
+</div>
+
+<div class="row nogutter boxrow green">
+<div class="col max-vh-10 align-self-center green box" id="box21"> 21 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box22"> 22 </div>
+<div class="col max-vh-10 align-self-center green box" id="box23"> 23 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box24"> 24 </div>
+<div class="col max-vh-10 align-self-center green box" id="box25"> 25 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box26"> 26 </div>
+<div class="col max-vh-10 align-self-center green box" id="box27"> 27 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box28"> 28 </div>
+<div class="col max-vh-10 align-self-center green box" id="box29"> 29</div>
+<div class="col max-vh-10 align-self-center green-l box" id="box30"> 30 </div>
+</div>
+
+<div class="row nogutter boxrow green">
+<div class="col max-vh-10 align-self-center green-l box" id="box20"> 20 </div>
+<div class="col max-vh-10 align-self-center green box" id="box19"> 19 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box18"> 18 </div>
+<div class="col max-vh-10 align-self-center green box" id="box17"> 17 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box16"> 16 </div>
+<div class="col max-vh-10 align-self-center green box" id="box15"> 15 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box14"> 14 </div>
+<div class="col max-vh-10 align-self-center green box" id="box13"> 13 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box12"> 12 </div>
+<div class="col max-vh-10 align-self-center green box" id="box11"> 11 </div>
+</div>
+
+<div class="row nogutter boxrow green">
+<div class="col max-vh-10 align-self-center green box" id="box1"> 1 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box2"> 2 </div>
+<div class="col max-vh-10 align-self-center green box" id="box3"> 3 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box4"> 4 </div>
+<div class="col max-vh-10 align-self-center green box" id="box5"> 5 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box6"> 6 </div>
+<div class="col max-vh-10 align-self-center green box" id="box7"> 7 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box8"> 8 </div>
+<div class="col max-vh-10 align-self-center green box" id="box9"> 9 </div>
+<div class="col max-vh-10 align-self-center green-l box" id="box10"> 10 </div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="js/board.js"></script>
+<script src="js/nice.js"></script>
+</body>
+</html>
+

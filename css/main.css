@@ -1,0 +1,369 @@
+body {
+    background: #272727; 
+    font-size: 12px;
+}
+
+main {
+    max-height: 100vh;
+    position: relative;
+}
+
+/* players */
+
+.p1, .p1x {
+max-width: 50px;
+margin-left: -10px;
+z-index: 9;
+animation: p1glowing 1500ms infinite;
+border-radius: 50px;
+position: absolute;
+}
+
+.p1x {
+max-width: 50px;
+animation: p1glowing 1500ms infinite;
+border-radius: 50px;
+}
+
+.p2 {
+max-width: 50px;
+margin-right: -10px;
+z-index: 8;
+animation: p2glowing 1500ms infinite;
+border-radius: 50px;
+position: absolute;
+}
+
+.p2x {
+max-width: 50px;
+animation: p2glowing 1500ms infinite;
+border-radius: 50px;
+}
+
+/* Main board settings */
+.game {
+    max-height: 100vh;
+}
+
+.game-controls {
+    padding: 20px;
+    max-height: 100vh;
+    position: relative;
+}
+
+.game-board { 
+    background-color: white;
+    padding: 0px;
+    max-height: 100vh;
+    position: relative;
+}
+
+header, .mobileheader {
+    color: white;
+    margin: 10px auto; 
+}
+
+.mobileheader {
+    visibility: hidden !important;
+    display: none !important;
+}
+
+h1{
+    text-align: center;
+    font-size: 1.8rem;
+    font-family: 'Goldman', sans-serif;
+}
+
+h2, h3, h4, h5, h6{
+    font-family: 'Goldman', sans-serif;
+}
+
+header img {
+    height:85px;
+}
+
+aside {
+    padding: 5px;
+    
+}
+
+.dices {
+    background-color: white;
+    border: 1px solid green;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.logbox {
+    background-color: black;
+    color: white;
+    padding: 15px 5px 15px 5px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin: 5px;
+    height: 200px;
+    max-height: 200px;
+    overflow: hidden;
+    text-align: left;
+}
+
+img.logdice {
+    height: 15px;
+    background-color: white;
+    padding: 1px;
+}
+
+samp {
+    line-height: 2;
+}
+
+.box0 {
+    height: 0px !important;
+    display: none;
+    visibility: hidden;
+}
+
+.players {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid red;
+    border-radius: 5px;
+    margin: 5px 20px;
+}
+
+.p1score, .p2score {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.dices img {
+    max-height: 65px;
+}
+
+.start-button {
+    margin: 0px 20px 20px 20px;
+    animation: glowing 1500ms infinite;
+}
+
+.end-button {
+    margin: 0px 20px 20px 20px;
+    animation: glowing 1500ms infinite;
+    display: none;
+}
+
+.main-button2 {
+    margin: 0px 20px 20px 20px;
+    animation: glowing2 1500ms infinite;
+}
+
+.boxrow {
+    /* max-width: 80%; */
+    /* display: flex;
+    justify-content: space-around;
+    gap: 2px;
+    margin: 2px auto;
+    cursor: pointer; */
+}
+
+.orange .box {
+border-color: chocolate;
+background-color: sandybrown;
+}
+
+.green {
+background-color: #272727;
+border-color: #198754;
+color: white !important;
+}
+
+.green-l {
+/* background: url("../img/space.gif"); */
+background-color: #198754;
+border-color: #198754;
+color: white !important;
+}
+
+.yellow {
+background-color: yellowgreen;
+border-color: goldenrod;
+}
+
+.red {
+background-color: darkred;
+border-color: crimson;
+color: white;
+}
+
+.blue {
+    background-color: skyblue;
+    border-color: blue;
+    color: white;
+    }
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-around;
+    border: 0.5px solid white;
+    /* border-radius: 5px; */
+    /* height: 10%; */
+    /* min-height: 10%; */
+    max-height: 10vh;
+    max-width: 10%;
+    aspect-ratio: 1 / 1;
+    /* padding: 25px; */
+    color: black;
+    font-size: 1.5rem;
+    overflow: hidden;
+}
+
+.instructions {
+    padding-top: 10px;
+    margin: 5px;
+}
+
+.copyright a{
+    text-decoration: none;
+}
+
+.copyright {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 5px;
+}
+
+@media (min-width: 1600px) {
+
+
+}
+  
+@media (min-width: 1200px) and (max-width: 1400px) {
+
+.logbox {
+    height: 100px;
+    max-height: 100px;
+}
+
+}
+  
+@media (min-width: 799px) and (max-width: 1199px){
+
+header {
+    margin: 10px auto;
+    visibility: hidden !important;
+    display: none !important;
+    height: 0px;
+}
+
+h1 {
+    font-size: 1.5rem;
+    padding: 20px;
+}
+
+.dices {
+    padding: 10px;
+    border-radius: 5px;
+    margin: 3px 10px;
+}
+
+.dices img {
+    max-height: 45px;
+}
+
+.p1 {
+    max-width: 40px;
+    }
+    
+.p2 {
+    max-width: 40px;
+    }
+
+.logbox {
+    height: 100px;
+    max-height: 100px;
+}
+
+.mobileheader {
+    visibility:visible !important;
+    display:block !important;
+}
+
+.copyright{
+    position: relative;
+}
+
+}
+  
+@media (max-width: 798px){
+
+.mobileheader {
+    visibility:visible !important;
+    display:block !important;
+}
+
+header {
+    visibility: hidden !important;
+    display: none !important;
+    height: 0px;
+}
+
+.dices img {
+    max-height: 35px;
+}
+
+.p1 {
+    max-width: 30px;
+    }
+    
+.p2 {
+    max-width: 30px;
+    }
+
+    
+.logbox {
+    height: 100px;
+    max-height: 100px;
+}
+
+.copyright{
+    position: relative;
+}
+
+}
+
+/* 
+.triangle-up {
+
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	border-bottom: 20px solid #555;
+    margin: 0 0;
+    position: absolute;
+} */
+
+@keyframes p1glowing {
+    0% { background-color: maroon; box-shadow: 0 0 10px yellowgreen; }
+    50% { background-color: purple; box-shadow: 0 0 80px fuchsia; }
+    100% { background-color: maroon; box-shadow: 0 0 10px yellowgreen; }
+    }
+
+@keyframes p2glowing {
+0% { background-color: slategray; box-shadow: 0 0 10px rgb(50, 73, 205); }
+50% { background-color: skyblue; box-shadow: 0 0 80px blue; }
+100% { background-color: slategray; box-shadow: 0 0 10px rgb(50, 73, 205); }
+}
+
+@keyframes glowing {
+    0% { background-color: green; box-shadow: 0 0 3px yellowgreen; }
+    50% { background-color: forestgreen; box-shadow: 0 0 40px green; }
+    100% { background-color: green; box-shadow: 0 0 3px yellowgreen; }
+    }
+
+@keyframes glowing2 {
+    0% { background-color: #0d6efd; box-shadow: 0 0 3px rgb(50, 73, 205); }
+    50% { background-color: steelblue; box-shadow: 0 0 40px blue; }
+    100% { background-color: #0d6efd; box-shadow: 0 0 3px rgb(50, 73, 205); }
+    }
